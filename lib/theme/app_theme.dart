@@ -17,10 +17,11 @@ class AppTheme {
   static ThemeData dark() => _build(Brightness.dark);
 
   static ThemeData _build(Brightness brightness) {
+    // Material 3 generates every role colour (primary, tertiary, surfaces,
+    // error...) from the seed, with readable contrast in light and dark.
     final scheme = ColorScheme.fromSeed(
       seedColor: seed,
       brightness: brightness,
-      dynamicSchemeVariant: DynamicSchemeVariant.fidelity,
     );
     final isDark = brightness == Brightness.dark;
     final background = isDark ? scheme.surface : scheme.surfaceContainerLow;
