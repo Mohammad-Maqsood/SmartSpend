@@ -28,8 +28,9 @@ class CategoryDonutChart extends StatelessWidget {
     final theme = Theme.of(context);
     final palette = AppPalette.of(context);
     final shares = totals.map((total) => total.share).toList();
-    final colors =
-        totals.map((total) => palette.categoryColor(total.category)).toList();
+    final colors = totals
+        .map((total) => palette.categoryColor(total.category))
+        .toList();
 
     return Semantics(
       label: 'Spending by category chart. $centerLabel $centerValue',
@@ -110,7 +111,12 @@ class _DonutPainter extends CustomPainter {
       final sweep = shares[i] * math.pi * 2 * progress;
       if (sweep > gap) {
         canvas.drawArc(
-            arcRect, start + gap / 2, sweep - gap, false, paint..color = colors[i]);
+          arcRect,
+          start + gap / 2,
+          sweep - gap,
+          false,
+          paint..color = colors[i],
+        );
       }
       start += sweep;
     }

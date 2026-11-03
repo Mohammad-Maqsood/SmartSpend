@@ -11,8 +11,9 @@ class SpendWiseApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeMode =
-        context.select<SettingsProvider, ThemeMode>((s) => s.themeMode);
+    final themeMode = context.select<SettingsProvider, ThemeMode>(
+      (s) => s.themeMode,
+    );
     return MaterialApp(
       title: 'SpendWise',
       debugShowCheckedModeBanner: false,

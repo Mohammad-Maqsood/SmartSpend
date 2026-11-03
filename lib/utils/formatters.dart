@@ -5,12 +5,20 @@ import 'package:intl/intl.dart';
 class Formatters {
   Formatters._();
 
-  static final _currency =
-      NumberFormat.currency(locale: 'en_IN', symbol: '₹', decimalDigits: 2);
-  static final _currencyWhole =
-      NumberFormat.currency(locale: 'en_IN', symbol: '₹', decimalDigits: 0);
-  static final _compact =
-      NumberFormat.compactCurrency(locale: 'en_IN', symbol: '₹');
+  static final _currency = NumberFormat.currency(
+    locale: 'en_IN',
+    symbol: '₹',
+    decimalDigits: 2,
+  );
+  static final _currencyWhole = NumberFormat.currency(
+    locale: 'en_IN',
+    symbol: '₹',
+    decimalDigits: 0,
+  );
+  static final _compact = NumberFormat.compactCurrency(
+    locale: 'en_IN',
+    symbol: '₹',
+  );
 
   /// ₹1,250.50
   static String currency(double amount) => _currency.format(amount);
@@ -18,8 +26,9 @@ class Formatters {
   /// ₹1,251
   static String currencyWhole(double amount) => _currencyWhole.format(amount);
 
-  /// ₹1.25K, ₹3.4L, ₹1Cr — for small chart labels.
-  static String compactCurrency(double amount) => _compact.format(amount);
+  /// ₹80, ₹1.25K, ₹3.4L, ₹1Cr — for small chart labels.
+  static String compactCurrency(double amount) =>
+      amount < 1000 ? currencyWhole(amount) : _compact.format(amount);
 
   /// 3 Nov 2026
   static String date(DateTime date) => DateFormat('d MMM yyyy').format(date);

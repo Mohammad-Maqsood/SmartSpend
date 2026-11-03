@@ -85,8 +85,9 @@ class SpendingHeroCard extends StatelessWidget {
                     Expanded(
                       child: Text(
                         'Set a monthly budget',
-                        style: theme.textTheme.labelLarge
-                            ?.copyWith(color: onCard),
+                        style: theme.textTheme.labelLarge?.copyWith(
+                          color: onCard,
+                        ),
                       ),
                     ),
                     Icon(Icons.chevron_right_rounded, color: onCard),
@@ -119,7 +120,8 @@ class _ChangePill extends StatelessWidget {
       icon = Icons.trending_flat_rounded;
     } else {
       final more = change > 0;
-      text = '${change.abs().toStringAsFixed(0)}% '
+      text =
+          '${change.abs().toStringAsFixed(0)}% '
           '${more ? 'more' : 'less'} than this time last month';
       icon = more ? Icons.trending_up_rounded : Icons.trending_down_rounded;
     }
@@ -137,9 +139,7 @@ class _ChangePill extends StatelessWidget {
           Flexible(
             child: Text(
               text,
-              style: Theme.of(context)
-                  .textTheme
-                  .labelMedium
+              style: Theme.of(context).textTheme.labelMedium
                   ?.copyWith(color: color),
             ),
           ),
@@ -197,8 +197,9 @@ class _BudgetProgress extends StatelessWidget {
             ),
             Text(
               'of ${Formatters.currencyWhole(budget)}',
-              style: textTheme.labelMedium
-                  ?.copyWith(color: color.withValues(alpha: 0.82)),
+              style: textTheme.labelMedium?.copyWith(
+                color: color.withValues(alpha: 0.82),
+              ),
             ),
           ],
         ),

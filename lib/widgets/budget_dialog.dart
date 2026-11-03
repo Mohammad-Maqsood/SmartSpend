@@ -30,13 +30,17 @@ class BudgetDialog extends StatefulWidget {
     final saved = await settings.setMonthlyBudget(removing ? null : result);
     messenger
       ..hideCurrentSnackBar()
-      ..showSnackBar(SnackBar(
-        content: Text(!saved
-            ? 'Could not save your budget. Please try again.'
-            : removing
+      ..showSnackBar(
+        SnackBar(
+          content: Text(
+            !saved
+                ? 'Could not save your budget. Please try again.'
+                : removing
                 ? 'Monthly budget removed'
-                : 'Monthly budget set to ${Formatters.currencyWhole(result)}'),
-      ));
+                : 'Monthly budget set to ${Formatters.currencyWhole(result)}',
+          ),
+        ),
+      );
   }
 
   @override
@@ -82,8 +86,9 @@ class _BudgetDialogState extends State<BudgetDialog> {
             TextFormField(
               controller: _controller,
               autofocus: true,
-              keyboardType:
-                  const TextInputType.numberWithOptions(decimal: true),
+              keyboardType: const TextInputType.numberWithOptions(
+                decimal: true,
+              ),
               inputFormatters: [AmountInputFormatter()],
               textInputAction: TextInputAction.done,
               onFieldSubmitted: (_) => _save(),

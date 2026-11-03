@@ -45,8 +45,10 @@ void main() {
     });
 
     test('a broken record throws a FormatException', () {
-      expect(() => Expense.fromJson({'id': '1', 'amount': 'ten'}),
-          throwsFormatException);
+      expect(
+        () => Expense.fromJson({'id': '1', 'amount': 'ten'}),
+        throwsFormatException,
+      );
     });
   });
 

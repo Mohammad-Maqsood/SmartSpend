@@ -34,15 +34,15 @@ class Expense {
   bool get hasNote => note.trim().isNotEmpty;
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'title': title,
-        'amount': amount,
-        'category': category.name,
-        'date': date.toIso8601String(),
-        'createdAt': createdAt.toIso8601String(),
-        'paymentMethod': paymentMethod.name,
-        'note': note,
-      };
+    'id': id,
+    'title': title,
+    'amount': amount,
+    'category': category.name,
+    'date': date.toIso8601String(),
+    'createdAt': createdAt.toIso8601String(),
+    'paymentMethod': paymentMethod.name,
+    'note': note,
+  };
 
   /// Builds an expense from saved JSON.
   ///

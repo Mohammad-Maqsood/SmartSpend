@@ -82,17 +82,21 @@ class _ExpenseListScreenState extends State<ExpenseListScreen> {
     final deleted = await provider.deleteExpense(expense.id);
     messenger
       ..hideCurrentSnackBar()
-      ..showSnackBar(deleted
-          ? SnackBar(
-              content: const Text('Expense deleted'),
-              action: SnackBarAction(
-                label: 'Undo',
-                onPressed: () => provider.restoreExpense(expense),
+      ..showSnackBar(
+        deleted
+            ? SnackBar(
+                content: const Text('Expense deleted'),
+                action: SnackBarAction(
+                  label: 'Undo',
+                  onPressed: () => provider.restoreExpense(expense),
+                ),
+              )
+            : const SnackBar(
+                content: Text(
+                  'Could not delete this expense. Please try again.',
+                ),
               ),
-            )
-          : const SnackBar(
-              content: Text('Could not delete this expense. Please try again.'),
-            ));
+      );
   }
 
   @override
@@ -116,11 +120,13 @@ class _ExpenseListScreenState extends State<ExpenseListScreen> {
             initialValue: _period,
             onSelected: (period) => setState(() => _period = period),
             itemBuilder: (_) => SummaryPeriod.values
-                .map((period) => CheckedPopupMenuItem(
-                      value: period,
-                      checked: period == _period,
-                      child: Text(period.label),
-                    ))
+                .map(
+                  (period) => CheckedPopupMenuItem(
+                    value: period,
+                    checked: period == _period,
+                    child: Text(period.label),
+                  ),
+                )
                 .toList(),
           ),
           const SizedBox(width: 4),
@@ -129,17 +135,18 @@ class _ExpenseListScreenState extends State<ExpenseListScreen> {
       body: switch (provider.loadState) {
         LoadState.loading => const LoadingView(),
         LoadState.error => ErrorView(
-            message: provider.errorMessage,
-            onRetry: provider.loadExpenses,
-          ),
+          message: provider.errorMessage,
+          onRetry: provider.loadExpenses,
+        ),
         LoadState.loaded when provider.isEmpty => EmptyView(
-            icon: Icons.receipt_long_rounded,
-            title: 'No expenses yet',
-            message: 'Every expense you add will appear here, '
-                'grouped by day.',
-            actionLabel: 'Add your first expense',
-            onAction: widget.onAddExpense,
-          ),
+          icon: Icons.receipt_long_rounded,
+          title: 'No expenses yet',
+          message:
+              'Every expense you add will appear here, '
+              'grouped by day.',
+          actionLabel: 'Add your first expense',
+          onAction: widget.onAddExpense,
+        ),
         LoadState.loaded => _buildList(provider),
       },
     );
@@ -159,7 +166,9 @@ class _ExpenseListScreenState extends State<ExpenseListScreen> {
     // already sorts newest first, so the groups come out newest first too.
     final groups = <DateTime, List<Expense>>{};
     for (final expense in results) {
-      groups.putIfAbsent(DateUtils.dateOnly(expense.date), () => []).add(expense);
+      groups
+          .putIfAbsent(DateUtils.dateOnly(expense.date), () => [])
+          .add(expense);
     }
     final days = groups.keys.toList();
     final padding = Layout.pagePadding(context, bottom: 100);
@@ -197,7 +206,12 @@ class _ExpenseListScreenState extends State<ExpenseListScreen> {
               height: 56,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                padding: EdgeInsets.fromLTRB(padding.left, 10, padding.right, 6),
+                padding: EdgeInsets.fromLTRB(
+                  padding.left,
+                  10,
+                  padding.right,
+                  6,
+                ),
                 children: [
                   _categoryChip(null),
                   for (final category in ExpenseCategory.values)
@@ -208,7 +222,11 @@ class _ExpenseListScreenState extends State<ExpenseListScreen> {
           ),
           SliverPadding(
             padding: EdgeInsets.fromLTRB(
-                padding.left + 4, 8, padding.right + 4, 0),
+              padding.left + 4,
+              8,
+              padding.right + 4,
+              0,
+            ),
             sliver: SliverToBoxAdapter(
               child: Row(
                 children: [
@@ -247,7 +265,11 @@ class _ExpenseListScreenState extends State<ExpenseListScreen> {
           else
             SliverPadding(
               padding: EdgeInsets.fromLTRB(
-                  padding.left, 0, padding.right, padding.bottom),
+                padding.left,
+                0,
+                padding.right,
+                padding.bottom,
+              ),
               sliver: SliverList.builder(
                 itemCount: days.length,
                 itemBuilder: (context, index) {
@@ -260,7 +282,9 @@ class _ExpenseListScreenState extends State<ExpenseListScreen> {
                         day: day,
                         now: now,
                         total: dayExpenses.fold<double>(
-                            0, (sum, e) => sum + e.amount),
+                          0,
+                          (sum, e) => sum + e.amount,
+                        ),
                       ),
                       ExpenseCardList(
                         expenses: dayExpenses,
@@ -286,8 +310,11 @@ class _ExpenseListScreenState extends State<ExpenseListScreen> {
       child: ChoiceChip(
         avatar: category == null
             ? null
-            : Icon(category.icon,
-                size: 18, color: palette.categoryColor(category)),
+            : Icon(
+                category.icon,
+                size: 18,
+                color: palette.categoryColor(category),
+              ),
         label: Text(category?.label ?? 'All'),
         selected: selected,
         selectedColor: category == null

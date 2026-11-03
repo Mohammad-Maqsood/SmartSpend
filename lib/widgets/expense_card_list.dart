@@ -43,8 +43,10 @@ class ExpenseCardList extends StatelessWidget {
             color: scheme.errorContainer,
             alignment: Alignment.centerRight,
             padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Icon(Icons.delete_outline_rounded,
-                color: scheme.onErrorContainer),
+            child: Icon(
+              Icons.delete_outline_rounded,
+              color: scheme.onErrorContainer,
+            ),
           ),
           child: row,
         );

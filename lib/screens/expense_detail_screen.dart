@@ -24,8 +24,9 @@ class ExpenseDetailScreen extends StatelessWidget {
 
   Future<void> _edit(BuildContext context, Expense expense) async {
     final messenger = ScaffoldMessenger.of(context);
-    final saved =
-        await context.pushScreen<bool>(ExpenseFormScreen(expense: expense));
+    final saved = await context.pushScreen<bool>(
+      ExpenseFormScreen(expense: expense),
+    );
     if (saved == true) {
       messenger
         ..hideCurrentSnackBar()
@@ -41,7 +42,8 @@ class ExpenseDetailScreen extends StatelessWidget {
     final confirmed = await ConfirmDialog.show(
       context,
       title: 'Delete this expense?',
-      message: 'This removes it from your records. '
+      message:
+          'This removes it from your records. '
           'You can undo straight after.',
       confirmLabel: 'Delete',
       destructive: true,
@@ -52,17 +54,21 @@ class ExpenseDetailScreen extends StatelessWidget {
     final deleted = await provider.deleteExpense(expense.id);
     messenger
       ..hideCurrentSnackBar()
-      ..showSnackBar(deleted
-          ? SnackBar(
-              content: const Text('Expense deleted'),
-              action: SnackBarAction(
-                label: 'Undo',
-                onPressed: () => provider.restoreExpense(expense),
+      ..showSnackBar(
+        deleted
+            ? SnackBar(
+                content: const Text('Expense deleted'),
+                action: SnackBarAction(
+                  label: 'Undo',
+                  onPressed: () => provider.restoreExpense(expense),
+                ),
+              )
+            : const SnackBar(
+                content: Text(
+                  'Could not delete this expense. Please try again.',
+                ),
               ),
-            )
-          : const SnackBar(
-              content: Text('Could not delete this expense. Please try again.'),
-            ));
+      );
   }
 
   @override
@@ -90,17 +96,23 @@ class ExpenseDetailScreen extends StatelessWidget {
     final categoryColor = palette.categoryColor(expense.category);
 
     // Extra context that the list row does not show.
-    final sameCategory =
-        provider.expensesInMonth(expense.date, category: expense.category);
-    final categoryTotal =
-        sameCategory.fold<double>(0, (total, e) => total + e.amount);
+    final sameCategory = provider.expensesInMonth(
+      expense.date,
+      category: expense.category,
+    );
+    final categoryTotal = sameCategory.fold<double>(
+      0,
+      (total, e) => total + e.amount,
+    );
     final monthTotal = provider
         .expensesInMonth(expense.date)
         .fold<double>(0, (total, e) => total + e.amount);
-    final shareOfCategory =
-        categoryTotal == 0 ? 0 : expense.amount / categoryTotal * 100;
-    final shareOfMonth =
-        monthTotal == 0 ? 0 : expense.amount / monthTotal * 100;
+    final shareOfCategory = categoryTotal == 0
+        ? 0
+        : expense.amount / categoryTotal * 100;
+    final shareOfMonth = monthTotal == 0
+        ? 0
+        : expense.amount / monthTotal * 100;
     final monthLabel = Formatters.monthYear(expense.date);
 
     return Scaffold(
@@ -148,8 +160,10 @@ class ExpenseDetailScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                   Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 6,
+                    ),
                     decoration: BoxDecoration(
                       color: palette.categoryBackground(expense.category),
                       borderRadius: BorderRadius.circular(20),
@@ -205,8 +219,10 @@ class ExpenseDetailScreen extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.insights_rounded,
-                      color: scheme.onSecondaryContainer),
+                  Icon(
+                    Icons.insights_rounded,
+                    color: scheme.onSecondaryContainer,
+                  ),
                   const SizedBox(width: 14),
                   Expanded(
                     child: Text(

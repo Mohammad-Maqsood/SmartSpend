@@ -31,7 +31,10 @@ class WeeklyBarChart extends StatelessWidget {
             final value = values[index];
             final isToday = index == values.length - 1;
             final day = DateTime(
-                today.year, today.month, today.day - (values.length - 1 - index));
+              today.year,
+              today.month,
+              today.day - (values.length - 1 - index),
+            );
             final fraction = maxValue == 0 ? 0.0 : value / maxValue;
             return Expanded(
               child: Column(

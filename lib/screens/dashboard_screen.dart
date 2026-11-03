@@ -74,9 +74,9 @@ class DashboardScreen extends StatelessWidget {
       body: switch (expenses.loadState) {
         LoadState.loading => const LoadingView(),
         LoadState.error => ErrorView(
-            message: expenses.errorMessage,
-            onRetry: expenses.loadExpenses,
-          ),
+          message: expenses.errorMessage,
+          onRetry: expenses.loadExpenses,
+        ),
         LoadState.loaded => _buildContent(context, expenses),
       },
     );
@@ -123,8 +123,9 @@ class DashboardScreen extends StatelessWidget {
                 child: StatCard(
                   icon: Icons.speed_rounded,
                   label: 'Daily average',
-                  value:
-                      Formatters.currencyWhole(expenses.dailyAverageThisMonth),
+                  value: Formatters.currencyWhole(
+                    expenses.dailyAverageThisMonth,
+                  ),
                 ),
               ),
             ],
@@ -151,7 +152,8 @@ class DashboardScreen extends StatelessWidget {
               fillPage: false,
               icon: Icons.receipt_long_rounded,
               title: 'No expenses yet',
-              message: 'Add your first expense and your spending '
+              message:
+                  'Add your first expense and your spending '
                   'summary will appear here.',
               actionLabel: 'Add expense',
               onAction: onAddExpense,

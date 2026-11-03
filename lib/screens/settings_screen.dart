@@ -24,7 +24,8 @@ class SettingsScreen extends StatelessWidget {
     final confirmed = await ConfirmDialog.show(
       context,
       title: 'Delete all expenses?',
-      message: 'This permanently removes all $count '
+      message:
+          'This permanently removes all $count '
           '${count == 1 ? 'expense' : 'expenses'} from this phone. '
           'This cannot be undone.',
       confirmLabel: 'Delete all',
@@ -34,11 +35,15 @@ class SettingsScreen extends StatelessWidget {
     final cleared = await provider.clearAll();
     messenger
       ..hideCurrentSnackBar()
-      ..showSnackBar(SnackBar(
-        content: Text(cleared
-            ? 'All expenses deleted'
-            : 'Could not delete expenses. Please try again.'),
-      ));
+      ..showSnackBar(
+        SnackBar(
+          content: Text(
+            cleared
+                ? 'All expenses deleted'
+                : 'Could not delete expenses. Please try again.',
+          ),
+        ),
+      );
   }
 
   @override
@@ -105,9 +110,11 @@ class SettingsScreen extends StatelessWidget {
                 child: const Icon(Icons.savings_outlined),
               ),
               title: const Text('Monthly budget'),
-              subtitle: Text(budget == null
-                  ? 'Not set. Tap to add one.'
-                  : '${Formatters.currencyWhole(budget)} per month'),
+              subtitle: Text(
+                budget == null
+                    ? 'Not set. Tap to add one.'
+                    : '${Formatters.currencyWhole(budget)} per month',
+              ),
               trailing: const Icon(Icons.chevron_right_rounded),
               onTap: () => BudgetDialog.edit(context),
             ),

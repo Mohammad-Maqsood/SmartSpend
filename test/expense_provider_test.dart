@@ -12,15 +12,14 @@ Expense expense(
   double amount,
   ExpenseCategory category,
   DateTime date,
-) =>
-    Expense(
-      id: id,
-      title: 'Expense $id',
-      amount: amount,
-      category: category,
-      date: date,
-      createdAt: date,
-    );
+) => Expense(
+  id: id,
+  title: 'Expense $id',
+  amount: amount,
+  category: category,
+  date: date,
+  createdAt: date,
+);
 
 void main() {
   // A fixed "now" so results do not depend on when the tests run.
@@ -41,16 +40,18 @@ void main() {
   }
 
   test('loads expenses sorted newest first', () async {
-    final provider =
-        await loadedProvider(FakeExpenseStorage(initial: sample.reversed.toList()));
+    final provider = await loadedProvider(
+      FakeExpenseStorage(initial: sample.reversed.toList()),
+    );
 
     expect(provider.loadState, LoadState.loaded);
     expect(provider.expenses.map((e) => e.id), ['1', '2', '3', '4', '5']);
   });
 
   test('goes to the error state when reading fails', () async {
-    final provider =
-        await loadedProvider(FakeExpenseStorage(failedReadsLeft: 1));
+    final provider = await loadedProvider(
+      FakeExpenseStorage(failedReadsLeft: 1),
+    );
 
     expect(provider.loadState, LoadState.error);
     expect(provider.errorMessage, isNotNull);
@@ -66,17 +67,23 @@ void main() {
     expect(provider.spentToday, 300);
   });
 
-  test('category totals are grouped, counted and sorted largest first',
-      () async {
-    final provider = await loadedProvider(FakeExpenseStorage(initial: sample));
-    final totals = provider.categoryTotals(SummaryPeriod.thisMonth);
+  test(
+    'category totals are grouped, counted and sorted largest first',
+    () async {
+      final provider = await loadedProvider(
+        FakeExpenseStorage(initial: sample),
+      );
+      final totals = provider.categoryTotals(SummaryPeriod.thisMonth);
 
-    expect(totals.map((t) => t.category),
-        [ExpenseCategory.food, ExpenseCategory.bills]);
-    expect(totals.first.amount, 500);
-    expect(totals.first.count, 2);
-    expect(totals.first.share, closeTo(0.5, 0.0001));
-  });
+      expect(totals.map((t) => t.category), [
+        ExpenseCategory.food,
+        ExpenseCategory.bills,
+      ]);
+      expect(totals.first.amount, 500);
+      expect(totals.first.count, 2);
+      expect(totals.first.share, closeTo(0.5, 0.0001));
+    },
+  );
 
   test('last seven days ends with today', () async {
     final provider = await loadedProvider(FakeExpenseStorage(initial: sample));
@@ -132,8 +139,7 @@ void main() {
   });
 
   test('never overwrites storage after a failed load', () async {
-    final storage =
-        FakeExpenseStorage(initial: sample, failedReadsLeft: 1);
+    final storage = FakeExpenseStorage(initial: sample, failedReadsLeft: 1);
     final provider = await loadedProvider(storage);
 
     expect(await provider.addExpense(sample.first), isFalse);

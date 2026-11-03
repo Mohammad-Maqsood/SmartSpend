@@ -28,8 +28,9 @@ Future<void> pumpSpendWise(
 
   SharedPreferences.setMockInitialValues({
     if (saved.isNotEmpty)
-      ExpenseStorage.storageKey:
-          jsonEncode(saved.map((e) => e.toJson()).toList()),
+      ExpenseStorage.storageKey: jsonEncode(
+        saved.map((e) => e.toJson()).toList(),
+      ),
   });
   final settings = SettingsProvider(SettingsStorage());
   await settings.load();
@@ -49,10 +50,9 @@ Future<void> pumpSpendWise(
 }
 
 Future<void> openTab(WidgetTester tester, String label) async {
-  await tester.tap(find.descendant(
-    of: find.byType(NavigationBar),
-    matching: find.text(label),
-  ));
+  await tester.tap(
+    find.descendant(of: find.byType(NavigationBar), matching: find.text(label)),
+  );
   await tester.pumpAndSettle();
 }
 
@@ -100,8 +100,9 @@ void main() {
     note: 'Vegetables, fruit and milk',
   );
 
-  testWidgets('home screen shows the app name and navigation tabs',
-      (tester) async {
+  testWidgets('home screen shows the app name and navigation tabs', (
+    tester,
+  ) async {
     await pumpSpendWise(tester);
 
     expect(find.text('SpendWise'), findsOneWidget);
@@ -110,8 +111,9 @@ void main() {
     }
   });
 
-  testWidgets('expense list shows the empty state when nothing is saved',
-      (tester) async {
+  testWidgets('expense list shows the empty state when nothing is saved', (
+    tester,
+  ) async {
     await pumpSpendWise(tester);
     await openTab(tester, 'Expenses');
 
@@ -119,9 +121,13 @@ void main() {
     expect(find.text('Add your first expense'), findsOneWidget);
   });
 
-  testWidgets('shows an error with a retry button, and retry recovers',
-      (tester) async {
-    final storage = FakeExpenseStorage(initial: [groceries], failedReadsLeft: 1);
+  testWidgets('shows an error with a retry button, and retry recovers', (
+    tester,
+  ) async {
+    final storage = FakeExpenseStorage(
+      initial: [groceries],
+      failedReadsLeft: 1,
+    );
     await pumpSpendWise(tester, storage: storage);
 
     expect(find.text('Something went wrong'), findsOneWidget);
@@ -134,8 +140,9 @@ void main() {
     expect(find.text('Weekly groceries'), findsOneWidget);
   });
 
-  testWidgets('form shows a clear message for each invalid field',
-      (tester) async {
+  testWidgets('form shows a clear message for each invalid field', (
+    tester,
+  ) async {
     await pumpSpendWise(tester);
     await openAddForm(tester);
 
@@ -149,8 +156,9 @@ void main() {
     expect(find.text('Add expense'), findsWidgets);
   });
 
-  testWidgets('form rejects a zero amount and a title without letters',
-      (tester) async {
+  testWidgets('form rejects a zero amount and a title without letters', (
+    tester,
+  ) async {
     await pumpSpendWise(tester);
     await openAddForm(tester);
 
@@ -163,8 +171,9 @@ void main() {
     expect(find.text('Title must contain at least one letter'), findsOneWidget);
   });
 
-  testWidgets('amount field ignores letters and a third decimal place',
-      (tester) async {
+  testWidgets('amount field ignores letters and a third decimal place', (
+    tester,
+  ) async {
     await pumpSpendWise(tester);
     await openAddForm(tester);
 
@@ -177,14 +186,17 @@ void main() {
     expect(find.text('99.99'), findsOneWidget);
   });
 
-  testWidgets('a valid expense is saved, listed and stored on the device',
-      (tester) async {
+  testWidgets('a valid expense is saved, listed and stored on the device', (
+    tester,
+  ) async {
     await pumpSpendWise(tester);
     await openAddForm(tester);
 
     await tester.enterText(find.widgetWithText(TextFormField, 'Amount'), '250');
     await tester.enterText(
-        find.widgetWithText(TextFormField, 'Title'), 'Lunch with friends');
+      find.widgetWithText(TextFormField, 'Title'),
+      'Lunch with friends',
+    );
     await tester.tap(find.widgetWithText(ChoiceChip, 'Food'));
     await tester.pump();
     await tapSave(tester);
@@ -196,8 +208,10 @@ void main() {
     expect(find.text('₹250.00'), findsWidgets);
 
     final preferences = await SharedPreferences.getInstance();
-    expect(preferences.getString(ExpenseStorage.storageKey),
-        contains('Lunch with friends'));
+    expect(
+      preferences.getString(ExpenseStorage.storageKey),
+      contains('Lunch with friends'),
+    );
   });
 
   testWidgets('tapping an expense opens its detail screen', (tester) async {
@@ -212,8 +226,9 @@ void main() {
     expect(find.text('UPI'), findsOneWidget);
   });
 
-  testWidgets('a fast double tap opens the detail screen only once',
-      (tester) async {
+  testWidgets('a fast double tap opens the detail screen only once', (
+    tester,
+  ) async {
     await pumpSpendWise(tester, saved: [groceries]);
     await openTab(tester, 'Expenses');
 

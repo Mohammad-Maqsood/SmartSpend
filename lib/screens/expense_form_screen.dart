@@ -65,10 +65,9 @@ class _ExpenseFormScreenState extends State<ExpenseFormScreen> {
   }
 
   /// 250.0 -> "250", 99.5 -> "99.50"
-  static String _amountToText(double amount) =>
-      amount == amount.roundToDouble()
-          ? amount.toStringAsFixed(0)
-          : amount.toStringAsFixed(2);
+  static String _amountToText(double amount) => amount == amount.roundToDouble()
+      ? amount.toStringAsFixed(0)
+      : amount.toStringAsFixed(2);
 
   void _markChanged() {
     if (!_hasChanges) setState(() => _hasChanges = true);
@@ -83,9 +82,9 @@ class _ExpenseFormScreenState extends State<ExpenseFormScreen> {
       setState(() => _autovalidateMode = AutovalidateMode.onUserInteraction);
       ScaffoldMessenger.of(context)
         ..hideCurrentSnackBar()
-        ..showSnackBar(const SnackBar(
-          content: Text('Please fix the highlighted fields'),
-        ));
+        ..showSnackBar(
+          const SnackBar(content: Text('Please fix the highlighted fields')),
+        );
       return;
     }
 
@@ -99,26 +98,30 @@ class _ExpenseFormScreenState extends State<ExpenseFormScreen> {
     final bool saved;
 
     if (_isEditing) {
-      saved = await provider.updateExpense(widget.expense!.copyWith(
-        title: title,
-        amount: amount,
-        category: _category,
-        date: _date,
-        paymentMethod: _paymentMethod,
-        note: note,
-      ));
+      saved = await provider.updateExpense(
+        widget.expense!.copyWith(
+          title: title,
+          amount: amount,
+          category: _category,
+          date: _date,
+          paymentMethod: _paymentMethod,
+          note: note,
+        ),
+      );
     } else {
       final now = DateTime.now();
-      saved = await provider.addExpense(Expense(
-        id: now.microsecondsSinceEpoch.toString(),
-        title: title,
-        amount: amount,
-        category: _category!,
-        date: _date,
-        createdAt: now,
-        paymentMethod: _paymentMethod,
-        note: note,
-      ));
+      saved = await provider.addExpense(
+        Expense(
+          id: now.microsecondsSinceEpoch.toString(),
+          title: title,
+          amount: amount,
+          category: _category!,
+          date: _date,
+          createdAt: now,
+          paymentMethod: _paymentMethod,
+          note: note,
+        ),
+      );
     }
 
     if (!mounted) return;
@@ -126,9 +129,11 @@ class _ExpenseFormScreenState extends State<ExpenseFormScreen> {
       Navigator.pop(context, true);
     } else {
       setState(() => _saving = false);
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text('Could not save this expense. Please try again.'),
-      ));
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Could not save this expense. Please try again.'),
+        ),
+      );
     }
   }
 
@@ -148,9 +153,9 @@ class _ExpenseFormScreenState extends State<ExpenseFormScreen> {
     final theme = Theme.of(context);
 
     Widget label(String text) => Padding(
-          padding: const EdgeInsets.fromLTRB(4, 22, 4, 10),
-          child: Text(text, style: theme.textTheme.titleSmall),
-        );
+      padding: const EdgeInsets.fromLTRB(4, 22, 4, 10),
+      child: Text(text, style: theme.textTheme.titleSmall),
+    );
 
     return PopScope(
       canPop: !_hasChanges || _saving,
@@ -172,14 +177,15 @@ class _ExpenseFormScreenState extends State<ExpenseFormScreen> {
               TextFormField(
                 controller: _amountController,
                 autofocus: !_isEditing,
-                keyboardType:
-                    const TextInputType.numberWithOptions(decimal: true),
+                keyboardType: const TextInputType.numberWithOptions(
+                  decimal: true,
+                ),
                 inputFormatters: [AmountInputFormatter()],
                 textInputAction: TextInputAction.next,
                 style: theme.textTheme.headlineSmall,
                 decoration: const InputDecoration(
                   labelText: 'Amount',
-                  hintText: '0',
+                  hintText: 'e.g. 250',
                   prefixIcon: Icon(Icons.currency_rupee_rounded),
                 ),
                 validator: Validators.amount,
@@ -239,11 +245,13 @@ class _ExpenseFormScreenState extends State<ExpenseFormScreen> {
                         child: CircularProgressIndicator(strokeWidth: 2.5),
                       )
                     : const Icon(Icons.check_rounded),
-                label: Text(_saving
-                    ? 'Saving…'
-                    : _isEditing
-                        ? 'Save changes'
-                        : 'Save expense'),
+                label: Text(
+                  _saving
+                      ? 'Saving…'
+                      : _isEditing
+                      ? 'Save changes'
+                      : 'Save expense',
+                ),
               ),
             ],
           ),

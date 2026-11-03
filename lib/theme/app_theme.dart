@@ -25,14 +25,17 @@ class AppTheme {
     );
     final isDark = brightness == Brightness.dark;
     final background = isDark ? scheme.surface : scheme.surfaceContainerLow;
-    final cardColor =
-        isDark ? scheme.surfaceContainer : scheme.surfaceContainerLowest;
+    final cardColor = isDark
+        ? scheme.surfaceContainer
+        : scheme.surfaceContainerLowest;
     final baseText = ThemeData(colorScheme: scheme).textTheme;
     final textTheme = baseText.copyWith(
-      headlineMedium:
-          baseText.headlineMedium?.copyWith(fontWeight: FontWeight.w800),
-      headlineSmall:
-          baseText.headlineSmall?.copyWith(fontWeight: FontWeight.w800),
+      headlineMedium: baseText.headlineMedium?.copyWith(
+        fontWeight: FontWeight.w800,
+      ),
+      headlineSmall: baseText.headlineSmall?.copyWith(
+        fontWeight: FontWeight.w800,
+      ),
       titleLarge: baseText.titleLarge?.copyWith(fontWeight: FontWeight.w700),
       titleMedium: baseText.titleMedium?.copyWith(fontWeight: FontWeight.w700),
     );
@@ -65,8 +68,10 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: cardColor,
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 16,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide(color: scheme.outlineVariant),
@@ -92,7 +97,9 @@ class AppTheme {
         style: FilledButton.styleFrom(
           minimumSize: const Size(64, 52),
           shape: rounded16,
-          textStyle: textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700),
+          textStyle: textTheme.titleSmall?.copyWith(
+            fontWeight: FontWeight.w700,
+          ),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(

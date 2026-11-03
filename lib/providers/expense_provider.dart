@@ -15,7 +15,7 @@ import '../services/expense_storage.dart';
 /// that is not really stored.
 class ExpenseProvider extends ChangeNotifier {
   ExpenseProvider(this._storage, {DateTime Function()? clock})
-      : _clock = clock ?? DateTime.now;
+    : _clock = clock ?? DateTime.now;
 
   final ExpenseStorage _storage;
 
@@ -101,7 +101,8 @@ class ExpenseProvider extends ChangeNotifier {
   }
 
   static List<Expense> _sorted(List<Expense> expenses) {
-    final copy = [...expenses]..sort((a, b) {
+    final copy = [...expenses]
+      ..sort((a, b) {
         final byDate = b.date.compareTo(a.date);
         return byDate != 0 ? byDate : b.createdAt.compareTo(a.createdAt);
       });
@@ -148,18 +149,22 @@ class ExpenseProvider extends ChangeNotifier {
     final amounts = <ExpenseCategory, double>{};
     final counts = <ExpenseCategory, int>{};
     for (final expense in inPeriod) {
-      amounts.update(expense.category, (value) => value + expense.amount,
-          ifAbsent: () => expense.amount);
-      counts.update(expense.category, (value) => value + 1,
-          ifAbsent: () => 1);
+      amounts.update(
+        expense.category,
+        (value) => value + expense.amount,
+        ifAbsent: () => expense.amount,
+      );
+      counts.update(expense.category, (value) => value + 1, ifAbsent: () => 1);
     }
     return amounts.entries
-        .map((entry) => CategoryTotal(
-              category: entry.key,
-              amount: entry.value,
-              count: counts[entry.key]!,
-              share: total == 0 ? 0 : entry.value / total,
-            ))
+        .map(
+          (entry) => CategoryTotal(
+            category: entry.key,
+            amount: entry.value,
+            count: counts[entry.key]!,
+            share: total == 0 ? 0 : entry.value / total,
+          ),
+        )
         .toList()
       ..sort((a, b) => b.amount.compareTo(a.amount));
   }
@@ -167,17 +172,20 @@ class ExpenseProvider extends ChangeNotifier {
   /// Expenses in the same calendar month as [month], optionally one category.
   List<Expense> expensesInMonth(DateTime month, {ExpenseCategory? category}) {
     return _expenses
-        .where((expense) =>
-            expense.date.year == month.year &&
-            expense.date.month == month.month &&
-            (category == null || expense.category == category))
+        .where(
+          (expense) =>
+              expense.date.year == month.year &&
+              expense.date.month == month.month &&
+              (category == null || expense.category == category),
+        )
         .toList();
   }
 
   double get spentToday {
     final today = _clock();
     return _sum(
-        _expenses.where((expense) => DateUtils.isSameDay(expense.date, today)));
+      _expenses.where((expense) => DateUtils.isSameDay(expense.date, today)),
+    );
   }
 
   /// Spending on each of the last seven days, oldest first (index 6 = today).
@@ -186,7 +194,8 @@ class ExpenseProvider extends ChangeNotifier {
     return List.generate(7, (index) {
       final day = DateTime(today.year, today.month, today.day - (6 - index));
       return _sum(
-          _expenses.where((expense) => DateUtils.isSameDay(expense.date, day)));
+        _expenses.where((expense) => DateUtils.isSameDay(expense.date, day)),
+      );
     });
   }
 
@@ -203,8 +212,10 @@ class ExpenseProvider extends ChangeNotifier {
   double? get changeFromLastMonth {
     final now = _clock();
     final lastMonth = DateTime(now.year, now.month - 1);
-    final lastMonthSoFar = _sum(expensesInMonth(lastMonth)
-        .where((expense) => expense.date.day <= now.day));
+    final lastMonthSoFar = _sum(
+      expensesInMonth(lastMonth)
+          .where((expense) => expense.date.day <= now.day),
+    );
     if (lastMonthSoFar == 0) return null;
     final thisMonth = totalFor(SummaryPeriod.thisMonth);
     return (thisMonth - lastMonthSoFar) / lastMonthSoFar * 100;

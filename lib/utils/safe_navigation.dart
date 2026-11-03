@@ -9,8 +9,7 @@ extension SafeNavigation on BuildContext {
   Future<T?> pushScreen<T>(Widget screen) async {
     final route = ModalRoute.of(this);
     if (route != null && !route.isCurrent) return null;
-    return Navigator.of(this).push<T>(
-      MaterialPageRoute(builder: (_) => screen),
-    );
+    return Navigator.of(this)
+        .push<T>(MaterialPageRoute(builder: (_) => screen));
   }
 }
