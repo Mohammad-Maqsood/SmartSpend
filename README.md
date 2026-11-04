@@ -213,3 +213,16 @@ The SpendWise application follows a simple workflow:
 3. Users should keep their device secure to protect their personal information.
 4. Clearing application data or uninstalling the app may remove saved records.
 5. Users should avoid entering sensitive personal information into expense descriptions.
+
+## Future Enhancements
+
+The following improvements may be considered for future versions of SpendWise:
+
+1. Adding monthly and yearly expense reports.
+2. Providing budget planning and spending limit reminders.
+3. Adding data backup and restore options.
+4. Introducing expense export in PDF or Excel format.
+5. Improving charts and graphical reports.
+6. Adding password protection for better privacy.
+
+These enhancements can make the application more useful and convenient in the future.
