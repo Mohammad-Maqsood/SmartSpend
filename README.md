@@ -115,9 +115,9 @@ To regenerate the launcher icon after changing the images in `assets/icon/`, run
 
 | Member | Name | Parts owned |
 |---|---|---|
-| 1 | Maqsood Mohammad | Data layer: `models/`, `services/`, `providers/` (storage, Provider stores, totals and filters), `test/expense_provider_test.dart` |
-| 2 | Maqsood Mohammad | Expense list, detail and form screens; form widgets and `utils/validators.dart`; `test/widget_test.dart` |
-| 3 | Maqsood Mohammad | Home dashboard, Insights screen and charts, Settings, theme and app icon |
+| 1 | Mohammad Maqsood | Data layer: `models/`, `services/`, `providers/` (storage, Provider stores, totals and filters), `test/expense_provider_test.dart` |
+| 2 | Mohammad Reesha Firdouse | Expense list, detail and form screens; form widgets and `utils/validators.dart`; `test/widget_test.dart` |
+| 3 | M.Deepthi Sri Varma | Home dashboard, Insights screen and charts, Settings, theme and app icon |
 
 
 ## Other documents
