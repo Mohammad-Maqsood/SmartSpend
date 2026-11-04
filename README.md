@@ -205,3 +205,11 @@ The SpendWise application follows a simple workflow:
 5. Saves data locally on the device.
 6. Works without requiring an internet connection.
 7. Makes personal expense management simple and convenient.
+
+## Privacy and Data Handling
+
+1. Expense records are stored locally on the user's device.
+2. Users can access their saved expense details within the application.
+3. Users should keep their device secure to protect their personal information.
+4. Clearing application data or uninstalling the app may remove saved records.
+5. Users should avoid entering sensitive personal information into expense descriptions.
