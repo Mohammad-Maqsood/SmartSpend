@@ -195,3 +195,13 @@ The SpendWise application follows a simple workflow:
 6. Select an expense to view its detailed information.
 7. Visit the Insights screen to understand spending patterns.
 8. Use Settings to manage application preferences.
+
+## Benefits of SpendWise
+
+1. Helps users record daily expenses easily.
+2. Keeps expense details organized in one place.
+3. Helps users understand their spending habits.
+4. Provides expense summaries and insights.
+5. Saves data locally on the device.
+6. Works without requiring an internet connection.
+7. Makes personal expense management simple and convenient.
