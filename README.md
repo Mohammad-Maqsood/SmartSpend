@@ -181,3 +181,17 @@ If the problem continues, check the error message in the terminal and resolve th
 4. Data is managed locally within the application.
 
 Note: Clearing the application data or uninstalling the app may remove locally stored expense records.
+
+
+## Application Workflow
+
+The SpendWise application follows a simple workflow:
+
+1. Open the application to access the Home Dashboard.
+2. View the total expense summary on the dashboard.
+3. Navigate to the Add Expense screen to enter expense details.
+4. Save the expense to add it to the expense records.
+5. Open the Expenses screen to view and manage recorded expenses.
+6. Select an expense to view its detailed information.
+7. Visit the Insights screen to understand spending patterns.
+8. Use Settings to manage application preferences.
