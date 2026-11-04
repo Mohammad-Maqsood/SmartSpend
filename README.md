@@ -113,14 +113,12 @@ To regenerate the launcher icon after changing the images in `assets/icon/`, run
 
 ## Team and contributions
 
-
 | Member | Name | Parts owned |
 |---|---|---|
 | 1 | Maqsood Mohammad | Data layer: `models/`, `services/`, `providers/` (storage, Provider stores, totals and filters), `test/expense_provider_test.dart` |
 | 2 | Maqsood Mohammad | Expense list, detail and form screens; form widgets and `utils/validators.dart`; `test/widget_test.dart` |
 | 3 | Maqsood Mohammad | Home dashboard, Insights screen and charts, Settings, theme and app icon |
 
-With a team of two, members 1 and 3 can be combined.
 
 ## Other documents
 
