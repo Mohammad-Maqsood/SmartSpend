@@ -170,3 +170,14 @@ If the problem continues, check the error message in the terminal and resolve th
 
 5. Can I change the application theme?
    Yes, theme preferences can be managed through the Settings screen.
+
+   Data Storage Information
+
+## SpendWise uses SharedPreferences for local data storage.
+
+1. Expense details are saved on the user's device.
+2. Saved information can be accessed when the application is reopened.
+3. The application can store and display expense records without an internet connection.
+4. Data is managed locally within the application.
+
+Note: Clearing the application data or uninstalling the app may remove locally stored expense records.
