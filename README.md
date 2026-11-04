@@ -153,3 +153,20 @@ If you face any problems while using or running SpendWise, try the following sol
 6. **APK not installing:** Make sure the device allows installation from the APK source and has a compatible Android version.
 
 If the problem continues, check the error message in the terminal and resolve the issue before running the application again.
+
+## Frequently Asked Questions
+
+1. What is SpendWise?
+   SpendWise is an expense tracker application that helps users record and manage their daily expenses.
+
+2. Does the application require an internet connection?
+   No, the application stores expense information locally on the device.
+
+3. Where is expense information stored?
+   Expense information is stored on the user's device using SharedPreferences.
+
+4. Can I view my spending details?
+   Yes, the Insights screen provides information about spending patterns and expense breakdown.
+
+5. Can I change the application theme?
+   Yes, theme preferences can be managed through the Settings screen.
