@@ -8,7 +8,12 @@ expense with an amount, category, date, payment method and note through a valida
 The app groups your spending by day, compares this month with last month, tracks a monthly
 budget, and shows a summary screen with totals per category. Everything is saved on the
 phone, so it works offline and your data survives a restart.
-
+## Table of contents
+- [screenshorts](#screenshots)
+- [Features](#features)
+- [project Structure](#project-structure)
+- [Team contributions](#team-contributions)
+- [Rrequirements](#requirements)
 ## Screenshots
 
 | Home | Expenses list | Expense detail | Form validation |
