@@ -129,3 +129,14 @@ To regenerate the launcher icon after changing the images in `assets/icon/`, run
 
 - [Defect log](DEFECT_LOG.md): defects found during testing, steps to reproduce and status
 - [Demo guide](docs/DEMO_GUIDE.md): the five-minute demonstration plan and a code walkthrough
+
+## User Guide
+This section explain how to use the SpendWise Expense Tracker application.
+1. Open then SpendWise application to view the dashboard and your expense summary.
+2. Select the Add Expense option to enter a new expense with its amount,category and details.
+3. Open the Expenses and select to view your recorded expenses and select an expense to see its details.
+4. Use the Insights screen to understand your spending patterns and expense breakdown.
+5. Visit the settings screen to manage the available application preferences and theme.
+6. Check your recorded expenses regularly to keep track of your spending.
+7. All expense information is stored locally on the device.
+Follow these steps to use the main features of SpendWise.
