@@ -140,3 +140,16 @@ This section explain how to use the SpendWise Expense Tracker application.
 6. Check your recorded expenses regularly to keep track of your spending.
 7. All expense information is stored locally on the device.
 Follow these steps to use the main features of SpendWise.
+
+## Troubleshooting Guide
+
+If you face any problems while using or running SpendWise, try the following solutions:
+
+1. **Flutter command not found:** Make sure Flutter is installed and added to the system PATH.
+2. **Packages not loading:** Run `flutter pub get` in the project terminal.
+3. **App not running:** Check the Flutter setup and connected Android device or emulator.
+4. **Build errors:** Run `flutter clean` followed by `flutter pub get`.
+5. **Tests not running:** Use `flutter test` to check the project tests.
+6. **APK not installing:** Make sure the device allows installation from the APK source and has a compatible Android version.
+
+If the problem continues, check the error message in the terminal and resolve the issue before running the application again.
