@@ -8,12 +8,17 @@ expense with an amount, category, date, payment method and note through a valida
 The app groups your spending by day, compares this month with last month, tracks a monthly
 budget, and shows a summary screen with totals per category. Everything is saved on the
 phone, so it works offline and your data survives a restart.
+
+## Download
+
+**[Download Smart Spend v1.1.0 (APK)](https://github.com/Mohammad-Maqsood/SmartSpend/releases/latest)** for Android 7.0 or newer.
+
 ## Table of contents
-- [screenshorts](#screenshots)
+- [Screenshots](#screenshots)
 - [Features](#features)
-- [project Structure](#project-structure)
+- [Project structure](#project-structure)
 - [Team contributions](#team-contributions)
-- [Rrequirements](#requirements)
+- [Requirements](#requirements)
 ## Screenshots
 
 | Home | Expenses list | Expense detail | Form validation |
@@ -90,7 +95,7 @@ assets/icon/                Source images for the launcher icon
 plugins, JDK 17 (Android Studio's bundled JDK works), and an Android phone or emulator.
 
 ```bash
-git clone <this repository URL>
+git clone https://github.com/Mohammad-Maqsood/SmartSpend.git
 cd SmartSpend
 flutter pub get
 flutter run            # with a phone (USB debugging on) or an emulator connected
@@ -131,19 +136,19 @@ To regenerate the launcher icon after changing the images in `assets/icon/`, run
 - [Demo guide](docs/DEMO_GUIDE.md): the five-minute demonstration plan and a code walkthrough
 
 ## User Guide
-This section explain how to use the SmartSpend Expense Tracker application.
-1. Open then SmartSpend application to view the dashboard and your expense summary.
+This section explains how to use the Smart Spend Expense Tracker application.
+1. Open the Smart Spend application to view the dashboard and your expense summary.
 2. Select the Add Expense option to enter a new expense with its amount,category and details.
 3. Open the Expenses and select to view your recorded expenses and select an expense to see its details.
 4. Use the Insights screen to understand your spending patterns and expense breakdown.
 5. Visit the settings screen to manage the available application preferences and theme.
 6. Check your recorded expenses regularly to keep track of your spending.
 7. All expense information is stored locally on the device.
-Follow these steps to use the main features of SmartSpend.
+Follow these steps to use the main features of Smart Spend.
 
 ## Troubleshooting Guide
 
-If you face any problems while using or running SmartSpend, try the following solutions:
+If you face any problems while using or running Smart Spend, try the following solutions:
 
 1. **Flutter command not found:** Make sure Flutter is installed and added to the system PATH.
 2. **Packages not loading:** Run `flutter pub get` in the project terminal.
@@ -156,8 +161,8 @@ If the problem continues, check the error message in the terminal and resolve th
 
 ## Frequently Asked Questions
 
-1. What is SmartSpend?
-   SmartSpend is an expense tracker application that helps users record and manage their daily expenses.
+1. What is Smart Spend?
+   Smart Spend is an expense tracker application that helps users record and manage their daily expenses.
 
 2. Does the application require an internet connection?
    No, the application stores expense information locally on the device.
@@ -173,7 +178,7 @@ If the problem continues, check the error message in the terminal and resolve th
 
    Data Storage Information
 
-## SmartSpend uses SharedPreferences for local data storage.
+## Smart Spend uses SharedPreferences for local data storage.
 
 1. Expense details are saved on the user's device.
 2. Saved information can be accessed when the application is reopened.
@@ -185,7 +190,7 @@ Note: Clearing the application data or uninstalling the app may remove locally s
 
 ## Application Workflow
 
-The SmartSpend application follows a simple workflow:
+The Smart Spend application follows a simple workflow:
 
 1. Open the application to access the Home Dashboard.
 2. View the total expense summary on the dashboard.
@@ -196,7 +201,7 @@ The SmartSpend application follows a simple workflow:
 7. Visit the Insights screen to understand spending patterns.
 8. Use Settings to manage application preferences.
 
-## Benefits of SmartSpend 
+## Benefits of Smart Spend 
 
 1. Helps users record daily expenses easily.
 2. Keeps expense details organized in one place.
@@ -216,7 +221,7 @@ The SmartSpend application follows a simple workflow:
 
 ## Future Enhancements
 
-The following improvements may be considered for future versions of SmartSpend:
+The following improvements may be considered for future versions of Smart Spend:
 
 1. Adding monthly and yearly expense reports.
 2. Providing budget planning and spending limit reminders.
