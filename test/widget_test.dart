@@ -4,19 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:spendwise/app.dart';
-import 'package:spendwise/models/expense.dart';
-import 'package:spendwise/models/expense_category.dart';
-import 'package:spendwise/models/payment_method.dart';
-import 'package:spendwise/providers/expense_provider.dart';
-import 'package:spendwise/providers/settings_provider.dart';
-import 'package:spendwise/services/expense_storage.dart';
-import 'package:spendwise/services/settings_storage.dart';
+import 'package:smart_spend/app.dart';
+import 'package:smart_spend/models/expense.dart';
+import 'package:smart_spend/models/expense_category.dart';
+import 'package:smart_spend/models/payment_method.dart';
+import 'package:smart_spend/providers/expense_provider.dart';
+import 'package:smart_spend/providers/settings_provider.dart';
+import 'package:smart_spend/services/expense_storage.dart';
+import 'package:smart_spend/services/settings_storage.dart';
 
 import 'helpers/fake_expense_storage.dart';
 
 /// Starts the whole app the same way `main()` does, using mock storage.
-Future<void> pumpSpendWise(
+Future<void> pumpSmartSpend(
   WidgetTester tester, {
   ExpenseStorage? storage,
   List<Expense> saved = const [],
@@ -42,7 +42,7 @@ Future<void> pumpSpendWise(
         ChangeNotifierProvider.value(value: settings),
         ChangeNotifierProvider.value(value: expenses),
       ],
-      child: const SpendWiseApp(),
+      child: const SmartSpendApp(),
     ),
   );
   await expenses.loadExpenses();
@@ -103,9 +103,9 @@ void main() {
   testWidgets('home screen shows the app name and navigation tabs', (
     tester,
   ) async {
-    await pumpSpendWise(tester);
+    await pumpSmartSpend(tester);
 
-    expect(find.text('SpendWise'), findsOneWidget);
+    expect(find.text('Smart Spend'), findsOneWidget);
     for (final tab in ['Home', 'Expenses', 'Insights', 'Settings']) {
       expect(find.text(tab), findsOneWidget);
     }
@@ -114,7 +114,7 @@ void main() {
   testWidgets('expense list shows the empty state when nothing is saved', (
     tester,
   ) async {
-    await pumpSpendWise(tester);
+    await pumpSmartSpend(tester);
     await openTab(tester, 'Expenses');
 
     expect(find.text('No expenses yet'), findsOneWidget);
@@ -128,7 +128,7 @@ void main() {
       initial: [groceries],
       failedReadsLeft: 1,
     );
-    await pumpSpendWise(tester, storage: storage);
+    await pumpSmartSpend(tester, storage: storage);
 
     expect(find.text('Something went wrong'), findsOneWidget);
     expect(find.text('Try again'), findsOneWidget);
@@ -143,7 +143,7 @@ void main() {
   testWidgets('form shows a clear message for each invalid field', (
     tester,
   ) async {
-    await pumpSpendWise(tester);
+    await pumpSmartSpend(tester);
     await openAddForm(tester);
 
     await tapSave(tester);
@@ -159,7 +159,7 @@ void main() {
   testWidgets('form rejects a zero amount and a title without letters', (
     tester,
   ) async {
-    await pumpSpendWise(tester);
+    await pumpSmartSpend(tester);
     await openAddForm(tester);
 
     await tester.enterText(find.widgetWithText(TextFormField, 'Amount'), '0');
@@ -174,7 +174,7 @@ void main() {
   testWidgets('amount field ignores letters and a third decimal place', (
     tester,
   ) async {
-    await pumpSpendWise(tester);
+    await pumpSmartSpend(tester);
     await openAddForm(tester);
 
     final amount = find.widgetWithText(TextFormField, 'Amount');
@@ -189,7 +189,7 @@ void main() {
   testWidgets('a valid expense is saved, listed and stored on the device', (
     tester,
   ) async {
-    await pumpSpendWise(tester);
+    await pumpSmartSpend(tester);
     await openAddForm(tester);
 
     await tester.enterText(find.widgetWithText(TextFormField, 'Amount'), '250');
@@ -215,7 +215,7 @@ void main() {
   });
 
   testWidgets('tapping an expense opens its detail screen', (tester) async {
-    await pumpSpendWise(tester, saved: [groceries]);
+    await pumpSmartSpend(tester, saved: [groceries]);
     await openTab(tester, 'Expenses');
 
     await tester.tap(find.text('Weekly groceries'));
@@ -229,7 +229,7 @@ void main() {
   testWidgets('a fast double tap opens the detail screen only once', (
     tester,
   ) async {
-    await pumpSpendWise(tester, saved: [groceries]);
+    await pumpSmartSpend(tester, saved: [groceries]);
     await openTab(tester, 'Expenses');
 
     final tile = find.text('Weekly groceries');
@@ -245,7 +245,7 @@ void main() {
   });
 
   testWidgets('category filter shows a no-results message', (tester) async {
-    await pumpSpendWise(tester, saved: [groceries]);
+    await pumpSmartSpend(tester, saved: [groceries]);
     await openTab(tester, 'Expenses');
 
     await tester.tap(find.widgetWithText(ChoiceChip, 'Transport'));
@@ -258,7 +258,7 @@ void main() {
   });
 
   testWidgets('works in landscape without layout errors', (tester) async {
-    await pumpSpendWise(tester, saved: [groceries]);
+    await pumpSmartSpend(tester, saved: [groceries]);
     tester.view.physicalSize = const Size(2400, 1080);
     await tester.pumpAndSettle();
 

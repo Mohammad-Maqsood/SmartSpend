@@ -1,4 +1,4 @@
-# Defect Log: SpendWise
+# Defect Log: Smart Spend
 
 Defects found while reviewing and testing the app, with the steps to reproduce each one and
 its status. Add any new defects found during testing on a physical phone to the end of the

@@ -1,4 +1,4 @@
-# SpendWise: Demonstration and Code Guide
+# Smart Spend: Demonstration and Code Guide
 
 ## Before the demo
 
@@ -12,7 +12,7 @@
 
 | Time | What to show | What to say |
 |---|---|---|
-| 0:00–0:30 | Home screen | "SpendWise is for students and young earners who lose track of small daily spending. It records every expense and shows where the money goes, offline." |
+| 0:00–0:30 | Home screen | "Smart Spend is for students and young earners who lose track of small daily spending. It records every expense and shows where the money goes, offline." |
 | 0:30–1:15 | Tap **Add expense**, tap **Save expense** with the form empty | "Every field is validated. Here is a clear message for each one." Then type `0` as the amount to show "Amount must be more than ₹0". |
 | 1:15–1:45 | Fill the form correctly and save | Point out the "Expense saved" message and the new row on Home. |
 | 1:45–2:15 | **Expenses** tab: search, tap a category chip, tap a row | Show the grouping by day, then the detail screen with the note, payment method and spending share. |

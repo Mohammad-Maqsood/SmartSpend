@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'app_palette.dart';
 
-/// Builds the light and dark themes for SpendWise from a single seed colour.
+/// Builds the light and dark themes for Smart Spend from a single seed colour.
 ///
 /// This is the only place in the app where a colour value is written.
 /// Every widget reads its colours from `Theme.of(context)`.

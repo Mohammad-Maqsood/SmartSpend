@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.khit.spendwise"
+    namespace = "com.khit.smartspend"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -15,7 +15,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.khit.spendwise"
+        applicationId = "com.khit.smartspend"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         // versionCode and versionName come from "version:" in pubspec.yaml.

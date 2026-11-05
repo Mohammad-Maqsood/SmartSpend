@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:spendwise/models/expense.dart';
-import 'package:spendwise/models/expense_category.dart';
-import 'package:spendwise/models/payment_method.dart';
-import 'package:spendwise/utils/validators.dart';
+import 'package:smart_spend/models/expense.dart';
+import 'package:smart_spend/models/expense_category.dart';
+import 'package:smart_spend/models/payment_method.dart';
+import 'package:smart_spend/utils/validators.dart';
 
 void main() {
   group('Expense JSON', () {

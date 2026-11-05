@@ -1,4 +1,4 @@
-package com.khit.spendwise
+package com.khit.smartspend
 
 import io.flutter.embedding.android.FlutterActivity
 

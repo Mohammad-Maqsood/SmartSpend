@@ -9,7 +9,7 @@ import '../models/expense.dart';
 /// The whole list is stored as one JSON string. This keeps the code simple
 /// and is fast enough for the few thousand records a person creates.
 class ExpenseStorage {
-  static const storageKey = 'spendwise.expenses.v1';
+  static const storageKey = 'smartspend.expenses.v1';
 
   Future<List<Expense>> readExpenses() async {
     final preferences = await SharedPreferences.getInstance();

@@ -6,8 +6,8 @@ import 'screens/home_shell.dart';
 import 'theme/app_theme.dart';
 
 /// The root widget: sets the app name, the light/dark themes and home screen.
-class SpendWiseApp extends StatelessWidget {
-  const SpendWiseApp({super.key});
+class SmartSpendApp extends StatelessWidget {
+  const SmartSpendApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class SpendWiseApp extends StatelessWidget {
       (s) => s.themeMode,
     );
     return MaterialApp(
-      title: 'SpendWise',
+      title: 'Smart Spend',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light(),
       darkTheme: AppTheme.dark(),

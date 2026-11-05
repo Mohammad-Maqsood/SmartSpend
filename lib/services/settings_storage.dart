@@ -3,8 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 /// Saves and loads user preferences (theme and monthly budget) on the device.
 class SettingsStorage {
-  static const _themeModeKey = 'spendwise.themeMode';
-  static const _budgetKey = 'spendwise.monthlyBudget';
+  static const _themeModeKey = 'smartspend.themeMode';
+  static const _budgetKey = 'smartspend.monthlyBudget';
 
   Future<ThemeMode> readThemeMode() async {
     final preferences = await SharedPreferences.getInstance();

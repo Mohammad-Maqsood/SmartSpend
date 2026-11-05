@@ -16,7 +16,7 @@ import '../widgets/section_header.dart';
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
-  static const appVersion = '1.0.0';
+  static const appVersion = '1.1.0';
 
   Future<void> _confirmClearAll(BuildContext context, int count) async {
     final provider = context.read<ExpenseProvider>();
@@ -168,7 +168,7 @@ class SettingsScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('SpendWise', style: theme.textTheme.titleMedium),
+                        Text('Smart Spend', style: theme.textTheme.titleMedium),
                         Text(
                           'Version $appVersion',
                           style: theme.textTheme.bodySmall?.copyWith(

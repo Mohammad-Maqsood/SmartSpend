@@ -1,9 +1,9 @@
-# SmartSpend : Personal Expense Tracker
+# Smart Spend: Personal Expense Tracker
 
 **Topic:** Expense tracker (Flutter Application Development Programme, group project)
 **Platform:** Android · **Flutter** 3.35+ (stable) · **Dart** with null safety · **State:** Provider
 
-SmartSpend helps students and young earners see where their money goes. You record each
+Smart Spend helps students and young earners see where their money goes. You record each
 expense with an amount, category, date, payment method and note through a validated form.
 The app groups your spending by day, compares this month with last month, tracks a monthly
 budget, and shows a summary screen with totals per category. Everything is saved on the
@@ -91,7 +91,7 @@ plugins, JDK 17 (Android Studio's bundled JDK works), and an Android phone or em
 
 ```bash
 git clone <this repository URL>
-cd SpendWise
+cd SmartSpend
 flutter pub get
 flutter run            # with a phone (USB debugging on) or an emulator connected
 ```

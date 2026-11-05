@@ -64,7 +64,7 @@ class DashboardScreen extends StatelessWidget {
                       color: theme.colorScheme.onSurfaceVariant,
                     ),
                   ),
-                  const Text('SpendWise'),
+                  const Text('Smart Spend'),
                 ],
               ),
             ),

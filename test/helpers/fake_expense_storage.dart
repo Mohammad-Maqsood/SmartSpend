@@ -1,5 +1,5 @@
-import 'package:spendwise/models/expense.dart';
-import 'package:spendwise/services/expense_storage.dart';
+import 'package:smart_spend/models/expense.dart';
+import 'package:smart_spend/services/expense_storage.dart';
 
 /// An in-memory storage for tests that can be told to fail.
 class FakeExpenseStorage extends ExpenseStorage {

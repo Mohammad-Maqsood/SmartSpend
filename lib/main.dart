@@ -23,7 +23,7 @@ Future<void> main() async {
           create: (_) => ExpenseProvider(ExpenseStorage())..loadExpenses(),
         ),
       ],
-      child: const SpendWiseApp(),
+      child: const SmartSpendApp(),
     ),
   );
 }

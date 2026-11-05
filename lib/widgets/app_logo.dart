@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// The SpendWise mark: a wallet on a gradient tile, drawn from theme colours.
+/// The Smart Spend mark: a wallet on a gradient tile, drawn from theme colours.
 class AppLogo extends StatelessWidget {
   const AppLogo({super.key, this.size = 40});
 

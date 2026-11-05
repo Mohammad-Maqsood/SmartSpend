@@ -1,9 +1,9 @@
-name: spendwise
-description: "SpendWise - a personal expense tracker for Android"
+name: smart_spend
+description: "Smart Spend - a personal expense tracker for Android"
 publish_to: 'none'
 
 # versionName+versionCode on Android.
-version: 1.0.0+1
+version: 1.1.0+2
 
 environment:
   sdk: ^3.13.5

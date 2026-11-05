@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:spendwise/models/expense.dart';
-import 'package:spendwise/models/expense_category.dart';
-import 'package:spendwise/models/load_state.dart';
-import 'package:spendwise/models/summary_period.dart';
-import 'package:spendwise/providers/expense_provider.dart';
+import 'package:smart_spend/models/expense.dart';
+import 'package:smart_spend/models/expense_category.dart';
+import 'package:smart_spend/models/load_state.dart';
+import 'package:smart_spend/models/summary_period.dart';
+import 'package:smart_spend/providers/expense_provider.dart';
 
 import 'helpers/fake_expense_storage.dart';
 
